@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import Cards, { Card } from 'react-swipe-card'
 import './styles.css';
 
-const Wrapper = ({data, onSwipeLeft, onSwipeRight}) => {
+const Wrapper = ({data, onSwipeLeft, onSwipeRight, onSwipeTop}) => {
   return (
     <Cards onEnd={console.log("action('end')")} className='master-root'>
       {Object.keys(data).map(item =>
         <Card 
           key={item}
           onSwipeLeft={() => onSwipeLeft(item)}
-          onSwipeRight={() => onSwipeRight(item)}>
+          onSwipeRight={() => onSwipeRight(item)}
+          onSwipeTop={() => onSwipeTop(item)}>
           <h2>{item}</h2>
         <img src={data[item]}/>
         </Card>
@@ -25,28 +26,30 @@ export default class MyCards extends Component {
 
         const req = require.context("./images", false, /.*\.jpg$/);
         let images = {};
-        let data = [];
         req.keys().forEach(function(key){
-            data.push(key.replace('./', ''));
             images[key.replace('./', '')] = req(key);
         });
         this.state = {
-            data: data,
-            liked: [],
-            disliked: [],
+            text: [],
+            human: [],
+            others: [],
             images: images
         }
     }
 
-
-
-    onSwipeLeft = () => {
-        const newData = this.state.data.slice(1);
-        this.setState(prevState => ({ data: newData, disliked: [...prevState.disliked, prevState.data[0]]}));
+    onSwipeTop = (item) => {
+        // delete this.state.images[item]
+        this.setState(prevState => ({ others: [...prevState.others, item]}));
     }
-    onSwipeRight = () => {
-        const newData = this.state.data.slice(1);
-        this.setState(prevState => ({ data: newData, liked: [...prevState.liked, prevState.data[0]] }));
+
+    onSwipeLeft = (item) => {
+        // delete this.state.images[item]
+        this.setState(prevState => ({ human: [...prevState.human, item]}));
+    }
+    
+    onSwipeRight = (item) => {
+        // delete this.state.images[item]
+        this.setState(prevState => ({ text: [...prevState.text, item]   }));
     }
     
     render() {
@@ -55,10 +58,13 @@ export default class MyCards extends Component {
         <Wrapper 
           onSwipeLeft={this.onSwipeLeft}
           onSwipeRight={this.onSwipeRight}
+          onSwipeTop={this.onSwipeTop}
           data={this.state.images}
         />
-        <ul>Liked: {this.state.liked.map(data => <li>{data}</li>)}</ul>
-        <ul>Disliked: {this.state.disliked.map(data => <li>{data}</li>)}</ul>
+        <ul>Others: {this.state.others.map(data => <li>{data}</li>)}</ul>
+        <ul>Human: {this.state.human.map(data => <li>{data}</li>)}</ul>
+        <ul>Text: {this.state.text.map(data => <li>{data}</li>)}</ul>
+
         </div>
     )
 }
