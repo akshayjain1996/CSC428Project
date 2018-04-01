@@ -49,7 +49,7 @@ import './global-styles';
 const initialState = {};
 const history = createHistory();
 const store = configureStore(initialState, history);
-const MOUNT_NODE = document.getElementById('app');
+const MOUNT_NODE = document.getElementById('root');
 
 const render = (messages) => {
   ReactDOM.render(
