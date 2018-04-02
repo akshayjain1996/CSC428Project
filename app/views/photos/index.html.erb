@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>All Photos In Your Library</h1>
+<div class="fullscreen-bg">
+  <video loop muted autoplay class="fullscreen-bg__video">
+    <source src="jasmin2.mp4" type="video/mp4">
+  </video>
+</div>
 
 <% if @photos.size == 0 %>
-  <div class="alert alert-info">
     <strong>Info!</strong> You have no photos in your library. To begin, start a classification session from the top right corner!
-  </div>
 <% else %>
-  <div class="alert alert-info">
-    <strong>Classified Photos</strong>
-  </div>
+  <h1>Classified Photos</h1>
 
   <div>
     <% @photos.each do |photo| %>
@@ -20,9 +20,7 @@
 
 <br>
 <% if @unclassified.size > 0 %>
-  <div class="alert alert-info">
-    <strong>Unclassified Photos</strong> The following photos have not been classified, click classify at the top right corner to begin!
-  </div>
+  <h1>Unclassified Photos</h1>
 
   <div>
     <% @unclassified.each do |photo| %>
