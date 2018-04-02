@@ -103,14 +103,70 @@
         e.preventDefault(); // prevent the default action (scroll / move caret)
     });
 </script>
+<br>
+<br>
 
-<directions>  <%= @c1 %> <-----------</directions>
+<h5 class="card-title"></h5>
 
-<%= link_to(image_tag(attachment_url(@photos.first, :image, :fit, 100, 100, format: 'jpg'), id: 'priyen-img', name: @photos.first.image_id, class: "main-img"), attachment_url(@photos.first, :image, :fit, 500, 500, format: 'jpg'), data: { lightbox: "example-set", title: @photos.first.name }, id: 'linkto') %>
+<div class="card text-white bg-primary mb-3 lightbox" style="max-width: 0rem;">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <h5 class="glyphicon glyphicon-arrow-up" style="font-size: 75px"></h5>
+    <p id="classtext" class="card-text classtext"><%= @c1 %></p>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="card text-white bg-primary mb-3 lightbox" style="max-width: 0rem;">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <h5 class="glyphicon glyphicon-arrow-right" style="font-size: 75px"></h5>
+    <p id="classtext" class="card-text classtext"><%= @c2 %></p>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="card text-white bg-primary mb-3 lightbox" style="max-width: 0rem;">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <h5 class="glyphicon glyphicon-arrow-down" style="font-size: 75px"></h5>
+    <p id="classtext" class="card-text classtext"><%= @c3 %></p>
+  </div>
+</div>
 
-<directions> -----------> <%= @c2 %></directions>
 
-<h1><%= @c3 %></h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<%= link_to(image_tag(attachment_url(@photos.first, :image, :fit, 500, 500, format: 'jpg'), id: 'priyen-img', name: @photos.first.image_id, class: "main-img"), attachment_url(@photos.first, :image, :fit, 500, 500, format: 'jpg'), data: { lightbox: "example-set", title: @photos.first.name }, id: 'linkto') %>
+
 
 <%= form_tag("/classify_image", method: "post") do %>
   <%= hidden_field_tag(:image_id, @photos.first.image_id) %>
