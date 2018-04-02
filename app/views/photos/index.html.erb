@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>All Photos In Your Library</h1>
+
+<% if @photos.size == 0 %>
+  <div class="alert alert-info">
+    <strong>Info!</strong> You have no photos in your library. To begin, start a classification session from the top right corner!
+  </div>
+<% else %>
+  <div class="alert alert-info">
+    <strong>Classified Photos</strong>
+  </div>
+
+  <div>
+    <% @photos.each do |photo| %>
+      <%= link_to(image_tag(attachment_url(photo, :image, :fit, 100, 100, format: 'jpg'), id: 'priyen-img', name: photo.image_id, class: "main-img"), attachment_url(photo, :image, :fit, 500, 500, format: 'jpg'), data: { lightbox: "example-set", title: "#{photo.name}, Classification: #{photo.classification}'" }, id: 'linkto') %>
+    <% end %>
+  </div>
+<% end %>
+
+<br>
+<% if @unclassified.size > 0 %>
+  <div class="alert alert-info">
+    <strong>Unclassified Photos</strong> The following photos have not been classified, click classify at the top right corner to begin!
+  </div>
+
+  <div>
+    <% @unclassified.each do |photo| %>
+      <%= link_to(image_tag(attachment_url(photo, :image, :fit, 100, 100, format: 'jpg'), id: 'priyen-img', name: photo.image_id, class: "main-img"), attachment_url(photo, :image, :fit, 500, 500, format: 'jpg'), data: { lightbox: "example-set", title: "#{photo.name}, Classification: #{photo.classification}'" }, id: 'linkto') %>
+    <% end %>
+  </div>
+<% end %>
+
+<br>

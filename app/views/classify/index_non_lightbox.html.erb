@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<style>
+  directions{
+    font-size: 34px;
+  }
+</style>
+
+<script type="text/javascript">
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        console.log(ev.target.id);
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        console.log(ev.clientX);
+        console.log(ev.clientY);
+        ev.preventDefault();
+
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+
+    function drop(event) {
+        console.log(event.clientX);
+        console.log(event.clientY);
+        event.preventDefault();
+        return false;
+    }
+
+    document.addEventListener("dragover", function(ev){
+        console.log(ev.clientX);
+        console.log(ev.clientY);
+        console.log('');
+
+        var pos = $("#priyen-img").position(); // returns an object with the attribute top and left
+        left_boundary = pos.left;
+        right_boundary = pos.left + $("#priyen-img").width();
+        bottom_boundary = pos.top + $("#priyen-img").height();
+
+        if (ev.clientX < left_boundary) {
+            $("#classification").val("1");
+            $("#form").submit();
+        }
+
+        if (ev.clientX > right_boundary) {
+            $("#classification").val("2");
+            $("form").submit();
+        }
+
+        if (ev.clientY > bottom_boundary) {
+            $("#classification").val("3");
+            $("form").submit();
+        }
+
+    });
+</script>
+
+<directions>  <%= @c1 %> <-----------</directions>
+
+<%= image_tag(attachment_url(@photos.first, :image, :fit, 400, 1000, format: 'jpg'), :ondragstart=>"drag(event)", id: 'priyen-img', name: @photos.first.image_id, class: "main-img") %>
+<directions> -----------> <%= @c2 %></directions>
+
+<h1><%= @c3 %></h1>
+
+<%= form_tag("/classify_image", method: "post") do %>
+  <%= hidden_field_tag(:image_id, @photos.first.image_id) %>
+  <%= hidden_field_tag(:classification) %>
+  <%= submit_tag("", :type => 'hidden') %>
+<% end %>

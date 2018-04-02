@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSC428</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Library",   '/photos' %></li>
+            <li><%= link_to "New Classification Session",   '/photos/new' %></li>
+            <li><%= link_to "Classify", '/classify' %></li>
+            <li><%= link_to "Summary", '/summary' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div id="container">
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg.html_safe, :id => "flash_#{name}" %>
+      <%- end -%>
+
+      <%= yield %>
+    </div>
+
+
+  </body>
+  
+</html>

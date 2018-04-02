@@ -1,0 +1,32 @@
+<%= form_for(photo) do |f| %>
+  <% if photo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+      <ul>
+      <% photo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Classifications %>
+    <%= f.text_field :name, :size => 50, :placeholder => 'comma seperated classifications' %>
+  </div>
+
+  <div class='field'>
+      <%= f.attachment_field :image, multiple: true %>
+  </div>
+
+  <% if @photo.image_id? %>
+    <%= image_tag attachment_url(@photo, :image, :fit, 500, 500) %>
+    <%= f.check_box :remove_image %>
+    <%= f.label :remove_image %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
