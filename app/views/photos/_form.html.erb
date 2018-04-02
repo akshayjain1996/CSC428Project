@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :Classifications %>
-    <%= f.text_field :name, :size => 50, :placeholder => 'comma seperated classifications' %>
+    <%= f.text_field :name, :size => 50, :class=> "form-control",  :placeholder => 'comma seperated classifications' %>
   </div>
 
   <div class='field'>
-      <%= f.attachment_field :image, multiple: true %>
+      <%= f.attachment_field :image, multiple: true, :class=> "col-lg-6 col-sm-6 col-12" %>
   </div>
 
   <% if @photo.image_id? %>
@@ -26,7 +26,7 @@
     <%= f.label :remove_image %>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="btn btn-default">
+    <%= f.submit text="Create Session" %>
   </div>
 <% end %>
