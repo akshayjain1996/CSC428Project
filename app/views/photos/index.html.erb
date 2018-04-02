@@ -13,7 +13,7 @@
 
   <div>
     <% @photos.each do |photo| %>
-      <%= link_to(image_tag(attachment_url(photo, :image, :fit, 100, 100, format: 'jpg'), id: 'priyen-img', name: photo.image_id, class: "main-img"), attachment_url(photo, :image, :fit, 500, 500, format: 'jpg'), data: { lightbox: "example-set", title: "#{photo.name}, Classification: #{photo.classification}'" }, id: 'linkto') %>
+      <%= link_to(image_tag(attachment_url(photo, :image, :fit, 200, 200, format: 'jpg'), id: 'priyen-img', name: photo.image_id, class: "main-img"), attachment_url(photo, :image, :fit, 500, 500, format: 'jpg'), data: { lightbox: "example-set", title: "#{photo.name}, Classification: #{photo.classification}'" }, id: 'linkto') %>
     <% end %>
   </div>
 <% end %>
@@ -26,7 +26,7 @@
 
   <div>
     <% @unclassified.each do |photo| %>
-      <%= link_to(image_tag(attachment_url(photo, :image, :fit, 100, 100, format: 'jpg'), id: 'priyen-img', name: photo.image_id, class: "main-img"), attachment_url(photo, :image, :fit, 500, 500, format: 'jpg'), data: { lightbox: "example-set", title: "#{photo.name}, Classification: #{photo.classification}'" }, id: 'linkto') %>
+      <%= link_to(image_tag(attachment_url(photo, :image, :fit, 200, 200, format: 'jpg'), id: 'priyen-img', name: photo.image_id, class: "main-img"), attachment_url(photo, :image, :fit, 500, 500, format: 'jpg'), data: { lightbox: "example-set", title: "#{photo.name}, Classification: #{photo.classification}'" }, id: 'linkto') %>
     <% end %>
   </div>
 <% end %>
