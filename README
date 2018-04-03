@@ -1,5 +1,9 @@
 Code at GitHub: https://github.com/akshayjain1996/CSC428Project/tree/priyen2
 
+We uploaded the code on github because we have large multimedia files and even zipping does not make file
+small enough. Furthermore, MarkUs does not allow zipfile, so it was impossible to upload the code, so we did it here.
+We are done this project, so no more code changes.
+
 This repo, branch 'priyen2' is our CSC428 classification project.
 
 Here we made a wep app that allows you to start a classification session in which
@@ -17,6 +21,9 @@ from the summary page.
 As an extra feature, you can also view your whole library on the main page at 127.0.0.1:3000/photos.
 
 Homepage: 127.0.0.1:3000/photos
+Built using Rails 5.
+Install by running: "bundle install"
+Start by running: "rails s"
 
 Thank you!
 
