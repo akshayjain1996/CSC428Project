@@ -25,5 +25,4 @@ Thank you!
 Acknowledgements:
 We followed the tutorial from here https://rubyplus.com/articles/4141-File-Upload-using-Refile-Gem-in-Rails-5
 that teaches us how to use file upload gem and also store photos in a database.
-Specifically, you can see this code as the file upload tag in photos/new view, and also in the Photo controller
-for how to translate the parameters into database data.
+Specifically, you can see this code as the file upload tag in photos/new view, and also in the Photo controller for how to translate the parameters into database data.
