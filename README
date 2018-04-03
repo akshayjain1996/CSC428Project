@@ -1,22 +1,17 @@
 Code at GitHub: https://github.com/akshayjain1996/CSC428Project/tree/priyen2
 
-We uploaded the code on github because we have large multimedia files and even zipping does not make file
-small enough. Furthermore, MarkUs does not allow zipfile, so it was impossible to upload the code, so we did it here.
+We uploaded the code on github because we have large multimedia files and even zipping does not make file small enough. Furthermore, MarkUs does not allow zipfile, so it was impossible to upload the code, so we did it here.
 We are done this project, so no more code changes.
 
 This repo, branch 'priyen2' is our CSC428 classification project.
 
-Here we made a wep app that allows you to start a classification session in which
-you can pick your own categories, and select images from your computer.
+Here we made a wep app that allows you to start a classification session in which you can pick your own categories, and select images from your computer.
 
-The web app will then allow you to classify images by swipping up/down/right or also using the arrow keys on the
-keyboard. It will also auto-zoom and focus onto images so it can be quick, but also helps user be focused on the image.
+The web app will then allow you to classify images by swipping up/down/right or also using the arrow keys on the keyboard. It will also auto-zoom and focus onto images so it can be quick, but also helps user be focused on the image.
 
-After the classification is done, a summary page is made to show you the results in table with image thumbnail,
-file name, and classification. You can re-classify any image by clicking on the thumbnail.
+After the classification is done, a summary page is made to show you the results in table with image thumbnail, file name, and classification. You can re-classify any image by clicking on the thumbnail.
 
-Finally, after this, you can also download zip files of the classifications with images (1 zip per classification)
-from the summary page.
+Finally, after this, you can also download zip files of the classifications with images (1 zip per classification) from the summary page.
 
 As an extra feature, you can also view your whole library on the main page at 127.0.0.1:3000/photos.
 
