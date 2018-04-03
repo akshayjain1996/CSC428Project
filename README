@@ -1,0 +1,27 @@
+Code at GitHub: https://github.com/akshayjain1996/CSC428Project/tree/priyen2
+
+This repo, branch 'priyen2' is our CSC428 classification project.
+
+Here we made a wep app that allows you to start a classification session in which
+you can pick your own categories, and select images from your computer.
+
+The web app will then allow you to classify images by swipping up/down/right or also using the arrow keys on the
+keyboard. It will also auto-zoom and focus onto images so it can be quick, but also helps user be focused on the image.
+
+After the classification is done, a summary page is made to show you the results in table with image thumbnail,
+file name, and classification. You can re-classify any image by clicking on the thumbnail.
+
+Finally, after this, you can also download zip files of the classifications with images (1 zip per classification)
+from the summary page.
+
+As an extra feature, you can also view your whole library on the main page at 127.0.0.1:3000/photos.
+
+Homepage: 127.0.0.1:3000/photos
+
+Thank you!
+
+Acknowledgements:
+We followed the tutorial from here https://rubyplus.com/articles/4141-File-Upload-using-Refile-Gem-in-Rails-5
+that teaches us how to use file upload gem and also store photos in a database.
+Specifically, you can see this code as the file upload tag in photos/new view, and also in the Photo controller
+for how to translate the parameters into database data.
