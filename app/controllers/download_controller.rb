@@ -1,6 +1,8 @@
 require 'zip/zip'
 
 class DownloadController < ApplicationController
+  # These are the different routes pointing the functions needed to generate zips of photos with
+  # That specific classification.
   def c0
     download '0'
   end
@@ -13,6 +15,7 @@ class DownloadController < ApplicationController
     download '2'
   end
 
+  # This function generates a zipfile of all photos with that classification index and sends it to the user.
   def download(c)
     file_name = "#{c}_at_#{Time.current.utc.to_i}.zip"
 

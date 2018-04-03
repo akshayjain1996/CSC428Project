@@ -1,16 +1,5 @@
+<!-- Here we make a small form to get classifications, and images selected by user to start a classification session. -->
 <%= form_for(photo) do |f| %>
-  <% if photo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
-
-      <ul>
-      <% photo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
     <%= f.label :Classifications %>
     <%= f.text_field :name, :size => 50, :class=> "form-control",  :placeholder => 'comma seperated classifications' %>

@@ -1,4 +1,5 @@
 
+<!-- Style to make arrow legend big. -->
 <style>
   directions{
     font-size: 34px;
@@ -7,26 +8,21 @@
 
 <script type="text/javascript">
 
-    var inprogress = false;
-    var startx = 0;
-    var starty = 0;
-
     function do_click(){
+        // Automatically open the light box / zoom into picture as soon as it loads.
+        // This is the transition to getting ready to classify.
         $('#linkto')[0].click();
         var box = $('.lb-nav')[0];
         box.id = 'pbox';
 
         $('#pbox').click(function(pos) {
-            startx = pos.clientX;
-            starty = pos.clientY;
 
+            // This code detects swiping, because we use swipe direction to determine
+            // How the photo should be classified.
             document.addEventListener("mousemove", function(ev){
                 if (inprogress == true){
                     return;
                 }
-                console.log(ev.clientX);
-                console.log(ev.clientY);
-                console.log('');
 
                 var pos = $("#pbox").offset(); // returns an object with the attribute top and left
                 left_boundary = pos.left;
@@ -34,8 +30,7 @@
                 bottom_boundary = pos.top + $("#pbox").height();
                 top_boundary = pos.top;
 
-                console.log('left: ' + left_boundary + ' right ' + right_boundary + ' bottom' + bottom_boundary);
-
+                // Detect swipe by seeing if mouse has left the boundaries determined.
                 if (ev.clientX < left_boundary) {
                     inprogress = true;
                     $("#up").val("0");
@@ -67,6 +62,8 @@
         });
     }
 
+    // Bug fix for some cases where the image does not auto-zoom on start.
+    // We reload the page really quickly that the user would not notice.
     $( document ).ready(function() {
         if ($("#go_back").val() == '1'){
             if (localStorage.getItem('reloaded') != 'true'){
@@ -83,6 +80,9 @@
         }
     });
 
+
+    // We can also use hotkeys to classify, so this code makes event handlers for that, and
+    // does action appropriately.
     $(document).keydown(function(e) {
         console.log(e.which);
         switch(e.which) {
@@ -107,6 +107,10 @@
 <br>
 
 <h5 class="card-title"></h5>
+
+
+<!-- Here we define the legend on the left side of classify page, the arrow images and their text. -->
+<!-- We do this for reference for the user, so they know what to do to classify to specific category. -->
 
 <div id="home" class="card text-white bg-primary mb-3 lightbox" style="max-width: 0rem;">
   <div class="card-header"></div>
@@ -168,6 +172,7 @@
 <%= link_to(image_tag(attachment_url(@photos.first, :image, :fit, 500, 500, format: 'jpg'), id: 'priyen-img', name: @photos.first.image_id, class: "main-img"), attachment_url(@photos.first, :image, :fit, 500, 500, format: 'jpg'), data: { lightbox: "example-set", title: @photos.first.name }, id: 'linkto') %>
 
 
+<!--Here we make an invisible form, this is used to do POST request to transmit data for classification of image in the background. -->
 <%= form_tag("/classify_image", method: "post") do %>
   <%= hidden_field_tag(:image_id, @photos.first.image_id) %>
   <%= hidden_field_tag(:up, '') %>

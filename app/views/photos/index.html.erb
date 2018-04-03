@@ -1,11 +1,14 @@
 <p id="notice"><%= notice %></p>
-
+<!-- This page is just to view all images in the database, not specific to the classification task itself, but its helpful. -->
+<!-- Background full screen image, nicely blends in showing app usage. -->
 <div class="fullscreen-bg">
   <video loop muted autoplay class="fullscreen-bg__video">
     <source src="jasmin2.mp4" type="video/mp4">
   </video>
 </div>
 
+<!-- Show appropriate message based on if any images need classifying or not. -->
+<!-- And then load the images as thumbnails that are clickable to open the lightbox of them / zoom in / zoom out. -->
 <% if @photos.size == 0 %>
     <strong>Info!</strong> You have no photos in your library. To begin, start a classification session from the top right corner!
 <% else %>
